@@ -77,7 +77,6 @@
     content: "\e905";
 }
 
-
 html, body {
   height: 100%;
 }
@@ -144,11 +143,19 @@ h3 {
   width: 150px;
   resize: none;
   border: none;
-
 }
 
 .idea-title:focus {
   outline: 1px solid grey;
+}
+
+.createDate {
+  font-size: 9px;
+  font-family: monospace;
+  line-height: 9px;
+  display: block;
+  margin: -5px 5px;
+  opacity: 0.5;
 }
 
 .idea-message {
@@ -199,6 +206,23 @@ h3 {
   opacity: 1;
 }
 
+
+
+.status {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 150px;
+  text-align: center;
+  color: white;
+  background: #27ae60;
+  font-family: monospace;
+  opacity: 0;
+  pointer-events: none;
+}
 
 .idea-remove:hover {
   color: #c0392b;
