@@ -1,14 +1,16 @@
 <!-- {{myIdeas}} -->
 <ul class="ideas-list">
-    <li ng-repeat="(key, item) in myIdeas" class="idea-item" id="{{key}}" >
+    <li ng-repeat="(key, item) in myIdeas" class="idea-item" id="{{key}}" set-focus="$last">
         <!--<h3 contenteditable="true" ng-model="item.title" ng-blur="ideasUpdate()"></h3>-->
-        <input class="idea-title" type="text" maxlength="20" ng-model="item.title" ng-blur="save(key)" placeholder="title..." >
-        <textarea class="idea-message" maxlength="140" ng-model="item.message" ng-blur="save(key)"  placeholder="message..."></textarea>
+        <input class="idea-title" type="text" maxlength="20" ng-model="item.title" ng-blur="save($event, key)" placeholder="title..." >
+        <span class="createDate">created: {{item.created}}</span>
+        <textarea class="idea-message" maxlength="140" ng-model="item.message" ng-blur="save($event, key)"  placeholder="message..."></textarea>
         <small class="charcount" ng-show="(140 - item.message.length) < 15">characters {{item.message.length}} / 140</small>
         <button class="idea-remove icon-cancel-circle" ng-click="remove(key)"></button>
+        <div class="status">saving...</div>
     </li>
     <li class="idea-item add">
-        <button ng-click="myIdeas.$add({'title' : '', 'message' : ''})" class="icon-plus idea-add"></button>
+        <button ng-click="add()" class="icon-plus idea-add"></button>
     </li>
 </ul> 
 
