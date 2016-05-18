@@ -1,7 +1,13 @@
-
+{{title}}
+{{myIdeas}}
 <ul class="ideas-list">
-    <li ng-repeat="(key, item) in items" class="idea-item" id="{{keygi}}">
-        <h3 contenteditable="true">{{item.title}}</h3>
-        <p>{{item.message}}</p>
+    <li ng-repeat="(key, item) in myIdeas" class="idea-item" id="{{key}}" >
+        <!--<h3 contenteditable="true" ng-model="item.title" ng-blur="ideasUpdate()"></h3>-->
+        <input class="idea-title" type="text" ng-model="item.title" ng-blur="save(key)" >
+        <input class="idea-message" type="text" ng-model="item.message" ng-blur="save(key)">
+        <button ng-click="remove(key)"> remove</button>
+    </li>
+    <li class="idea-item add">
+        <button ng-click="myIdeas.$add({'title' : '', 'message' : ''})">add</button>
     </li>
 </ul> 
