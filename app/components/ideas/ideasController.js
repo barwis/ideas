@@ -15,24 +15,20 @@ angular
 
         $scope.save = function(e, id) {
             console.log('saving ', id,  '...');
-            console.log(e.target.parentNode.getElementsByClassName('status'));
             var $t = $(e.target.parentNode.getElementsByClassName('status'));
             $t.text('saving...').css('opacity', 1);
             list.$save(id).then(function(ref) {
-                console.log('saved!')
                 $t.text('done!').delay(200).animate({ opacity: 0}, 500, function() {})
             })
         }
 
         $scope.remove = function(id) {
-            console.log('removing ', id, '...');
             list.$remove(id).then(function(ref) {
-                console.log('removed!', ref);
+                
             })
         }
 
         $scope.add = function() {
-            console.log('adding new entry...');
             var newIdea = {
                 'title' : '',
                 'message' : '',
@@ -45,11 +41,12 @@ angular
     .directive('setFocus', function(){
       return{
           scope: {setFocus: '='},
-          link: function(scope, element){
-             if(scope.setFocus) {
-                console.log('focus here!', element[0].childNodes[3])
-                element[0].childNodes[3].focus();             
-                }
+          link: function($scope, element, attrs){
+             if($scope.setFocus) {
+                if ( $scope.$parent.item.title === '') {
+                    element[0].childNodes[3].focus();       
+                }      
+            }
           }
       };
     });
